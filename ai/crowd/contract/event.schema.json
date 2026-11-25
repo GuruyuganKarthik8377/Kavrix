@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kavrix.event/1",
+  "title": "Kavrix crowd event (schema_version 1)",
+  "description": "One JSON object per event, produced by crowd_risk.py. Two types: crowd_risk (one reading, about once per second) and crowd_alert (a reading that needs an officer, with an extra alert_kind and message). Extra fields are allowed and must be preserved. Events form a hash chain per run_id: event_hash = SHA-256 of the canonical JSON of the event without event_hash (see ai/crowd/README.md). Do not change any value when storing or forwarding an event, or the hash no longer matches.",
+  "type": "object",
+  "required": [
+    "schema_version", "id", "type", "run_id", "drone_id", "seq", "lat", "lng", "risk", "level", "count",
+    "density_peak", "motion", "risk_rate", "time_to_high", "hotspot", "timestamp", "video_t", "heatmap",
+    "evidence_hash", "prev_hash", "event_hash"
+  ],
+  "properties": {
+    "schema_version": { "const": 1, "description": "Version of this format." },
+    "id": { "type": "string", "minLength": 1, "description": "Unique event id." },
+    "type": { "enum": ["crowd_risk", "crowd_alert"] },
+    "run_id": { "type": "string", "minLength": 1, "description": "One recording or live stream. The hash chain restarts at an all-zero prev_hash for every run_id." },
+    "drone_id": { "type": "string", "minLength": 1, "description": "The drone that filmed it, for example D-01." },
+    "seq": { "type": "integer", "minimum": 0, "description": "0, 1, 2, ... within a run_id, with no gaps. A gap means a lost event." },
+    "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+    "lng": { "type": "number", "minimum": -180, "maximum": 180 },
+    "risk": { "type": "number", "minimum": 0, "maximum": 100, "description": "Crowd-crush risk score. Relative to the people detected, not an absolute danger measure." },
+    "level": { "enum": ["LOW", "MEDIUM", "HIGH"], "description": "LOW below 35, MEDIUM 35 to below 65, HIGH 65 and above." },
+    "count": { "type": "integer", "minimum": 0, "description": "People detected (about 89% of the true crowd on average; see the accuracy results)." },
+    "density_peak": { "type": "number", "minimum": 0, "description": "People within one local window at the densest spot." },
+    "motion": { "type": "number", "minimum": 0, "description": "Crowd movement after the drone's own motion is removed." },
+    "risk_rate": { "type": "number", "description": "Risk points per second over the last 2 s (positive = rising)." },
+    "time_to_high": { "type": ["number", "null"], "minimum": 0, "description": "Estimated seconds until HIGH if the rise continues. An estimate, or null." },
+    "hotspot": {
+      "type": ["object", "null"],
+      "required": ["x", "y"],
+      "properties": { "x": { "type": "number", "minimum": 0, "maximum": 1 }, "y": { "type": "number", "minimum": 0, "maximum": 1 } },
+      "description": "Densest spot as fractions of the video frame (x from the left, y from the top). A frame position, not a map coordinate; the map pin uses lat/lng."
+    },
+    "timestamp": { "type": "string", "format": "date-time", "description": "Wall-clock time the event was produced (UTC, ISO 8601)." },
+    "video_t": { "type": "number", "minimum": 0, "description": "Seconds into the video." },
+    "heatmap": { "type": "string", "minLength": 1, "description": "Relative path of the annotated snapshot image, for example heatmaps/event_0003.jpg." },
+    "evidence_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the exact bytes of the snapshot image file." },
+    "prev_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "event_hash of the previous event in this run, or 64 zeros for seq 0." },
+    "event_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the canonical JSON of this event without event_hash." },
+    "alert_kind": { "enum": ["surge", "sustained_high"], "description": "crowd_alert only." },
+    "message": { "type": "string", "minLength": 1, "description": "crowd_alert only: a sentence for the officer." }
+  },
+  "allOf": [
+    { "if": { "properties": { "type": { "const": "crowd_alert" } } }, "then": { "required": ["alert_kind", "message"] } }
+  ],
+  "additionalProperties": true
+}

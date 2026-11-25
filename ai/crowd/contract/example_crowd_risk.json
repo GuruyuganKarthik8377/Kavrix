@@ -1,0 +1,27 @@
+{
+  "id": "32b86bcac617",
+  "type": "crowd_risk",
+  "lat": 17.4239,
+  "lng": 78.4738,
+  "risk": 15.6,
+  "level": "LOW",
+  "count": 135,
+  "density_peak": 9.44,
+  "motion": 0.18,
+  "risk_rate": 5.1,
+  "time_to_high": 9.6,
+  "hotspot": {
+    "x": 0.698,
+    "y": 0.241
+  },
+  "timestamp": "2026-11-20T08:19:50.481+00:00",
+  "video_t": 3.0,
+  "heatmap": "heatmaps/event_0003.jpg",
+  "evidence_hash": "c4729e293158027f929dd13db168ef790d25b65c13cee498073f91c9b4af1205",
+  "schema_version": 1,
+  "run_id": "concert-pexels-34004639",
+  "drone_id": "D-01",
+  "seq": 3,
+  "prev_hash": "103447932b5e07c3e0c42cd096ceecfe42f89c620ae559081ecf591d62bdc821",
+  "event_hash": "bdf4c91335f9bff54fecf04d0d42dbe27b2e1f6e7b1176e31009d2b1619c738f"
+}

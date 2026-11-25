@@ -1,0 +1,35 @@
+{
+  "frames": 246,
+  "mae": 51.4,
+  "mape_pct": 31.6,
+  "mean_detected_over_true": 0.96,
+  "median_detected_over_true": 0.89,
+  "pearson_count": 0.779,
+  "spearman_count": 0.831,
+  "spearman_peak_density": 0.694,
+  "by_density": {
+    "gt<100": {
+      "frames": 86,
+      "mean_detected_over_true": 1.07
+    },
+    "gt 100-250": {
+      "frames": 127,
+      "mean_detected_over_true": 0.87
+    },
+    "gt>=250": {
+      "frames": 33,
+      "mean_detected_over_true": 0.99
+    }
+  },
+  "settings": {
+    "model": "models/yolov8s-visdrone/best.pt",
+    "classes": [
+      0,
+      1
+    ],
+    "imgsz": 1920,
+    "conf": 0.1,
+    "tile": 0,
+    "frames_per_seq": 3
+  }
+}

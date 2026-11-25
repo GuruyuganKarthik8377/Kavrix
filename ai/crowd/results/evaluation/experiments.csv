@@ -1,0 +1,10 @@
+setting,run,seconds_for_246_frames,mae,mape_pct,median_detected_over_true,spearman_count,spearman_density
+"baseline: imgsz 1920, conf 0.10",base,19,51.4,31.6,0.89,0.831,0.694
+NMS overlap 0.8,iou80,18,81.4,55.7,1.2,0.771,0.589
+NMS overlap 0.9,iou90,19,149.1,104.8,1.52,0.677,0.41
+NMS overlap 0.8 + conf 0.15,iou80_c15,18,64.2,39.8,0.89,0.757,0.578
+NMS overlap 0.9 + conf 0.15,iou90_c15,19,99.6,66.4,1.14,0.672,0.415
+contrast boost (CLAHE),clahe,23,54.9,34.1,0.75,0.814,0.683
+"imgsz 2560, conf 0.10",sz2560,36,44.7,28.5,0.89,0.849,0.737
+"imgsz 2560, conf 0.15",sz2560_c15,40,48.0,30.9,0.7,0.839,0.749
+test-time augmentation,aug,45,66.4,47.0,1.15,0.818,0.689

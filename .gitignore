@@ -1,0 +1,20 @@
+# created by setup_haven.py or by running the project
+.venv/
+node_modules/
+dist/
+.env
+.env.local
+backend/data/
+runs/
+ai/face/out/
+__pycache__/
+.DS_Store
+
+# personal data: the volunteer's video and face crops stay off GitHub (consent covers the demo, not publication)
+ai/face/recorded/*/*.mp4
+ai/face/recorded/*/*.jpg
+
+# editors / logs
+.vscode/
+.idea/
+*.log

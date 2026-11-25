@@ -1,0 +1,29 @@
+{
+  "id": "918f421a388c",
+  "type": "crowd_alert",
+  "lat": 17.4239,
+  "lng": 78.4738,
+  "risk": 47.3,
+  "level": "MEDIUM",
+  "count": 498,
+  "density_peak": 30.64,
+  "motion": 0.14,
+  "risk_rate": 8.0,
+  "time_to_high": 2.2,
+  "hotspot": {
+    "x": 0.221,
+    "y": 0.548
+  },
+  "timestamp": "2026-11-20T08:19:58.614+00:00",
+  "video_t": 7.51,
+  "heatmap": "heatmaps/alert_0000.jpg",
+  "evidence_hash": "4070abafd4339d32889d0fa6ac8612b0b9277237978e61b40af9c7c8ee71902c",
+  "alert_kind": "surge",
+  "message": "Rapid crowd build-up: risk rising 8 points/s, now 47/100 (498 people detected). HIGH in about 2 s at this rate (estimate). Check the hotspot.",
+  "schema_version": 1,
+  "run_id": "concert-pexels-34004639",
+  "drone_id": "D-01",
+  "seq": 8,
+  "prev_hash": "682af5110fee83d6570be68f752041f483feaaf1d843f0a5e6619a14107e7fa2",
+  "event_hash": "654afcc3532faccc3dd0720891d82c24f83c55357c67a18a78bf12b7fca0d053"
+}

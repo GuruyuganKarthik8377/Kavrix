@@ -1,0 +1,138 @@
+{
+  "title": "How accurate is the crowd count?",
+  "headline": {
+    "dataset": "VisDrone2020-CC (DroneCrowd), 82 annotated sequences, 3 frames each, 1920x1080 drone video",
+    "frames": 246,
+    "sequences": 82,
+    "median_detected_over_true": 0.89,
+    "mean_absolute_error_people": 51.4,
+    "mean_absolute_error_pct": 31.6,
+    "rank_correlation_counts": 0.831,
+    "rank_correlation_density": 0.694,
+    "plain_english": "On average the detector finds about 89% of the people really in the frame (median), with a typical error of 51 people (32%). It orders scenes by crowd size well (rank correlation 0.83)."
+  },
+  "by_density": [
+    {
+      "true_people": "under 100",
+      "frames": 86,
+      "detected_over_true": 1.07
+    },
+    {
+      "true_people": "100 to 250",
+      "frames": 127,
+      "detected_over_true": 0.87
+    },
+    {
+      "true_people": "250 or more",
+      "frames": 33,
+      "detected_over_true": 0.99
+    }
+  ],
+  "settings_compared": [
+    {
+      "setting": "confidence 0.10 (used)",
+      "mae": 51.4,
+      "error_pct": 31.6,
+      "median_detected_over_true": 0.89,
+      "rank_correlation": 0.83,
+      "best": true
+    },
+    {
+      "setting": "confidence 0.15",
+      "mae": 54.4,
+      "error_pct": 33.4,
+      "median_detected_over_true": 0.7,
+      "rank_correlation": 0.82
+    },
+    {
+      "setting": "confidence 0.25",
+      "mae": 76.5,
+      "error_pct": 50.7,
+      "median_detected_over_true": 0.47,
+      "rank_correlation": 0.74
+    },
+    {
+      "setting": "confidence 0.05",
+      "mae": 62.6,
+      "error_pct": 44.9,
+      "median_detected_over_true": 1.2,
+      "rank_correlation": 0.83,
+      "note": "over-counts"
+    },
+    {
+      "setting": "tiled, confidence 0.15",
+      "mae": 50.6,
+      "error_pct": 34.7,
+      "median_detected_over_true": 0.8,
+      "rank_correlation": 0.75
+    }
+  ],
+  "validation_runs": [
+    {
+      "name": "Juelich entrance experiment, 75 people, 65 s",
+      "detector": "orange-cap colour detector (special-purpose, not a general detector)",
+      "correlation": 0.995,
+      "mean_absolute_error_people": 4.8,
+      "detected_over_true": 1.21,
+      "chart": "charts/jl030_count_vs_truth.png",
+      "note": "Overhead fixed camera, indoor controlled experiment with volunteers. The detector over-counts by about 5, probably people past the gate whose tracks have ended (not verified)."
+    },
+    {
+      "name": "DroneCrowd sequence 023, about 260 people, 12 s",
+      "detector": "VisDrone-trained YOLOv8s",
+      "correlation": null,
+      "mean_absolute_error_people": 73.9,
+      "detected_over_true": 0.71,
+      "chart": "charts/dc023_count_vs_truth.png",
+      "note": "The true crowd barely changes, so correlation is not meaningful; the detector finds a steady 71% of it."
+    }
+  ],
+  "charts": [
+    {
+      "file": "charts/concert_risk.png",
+      "title": "Concert clip: risk over time",
+      "caption": "Risk climbs from LOW to HIGH as the drone's view takes in more of the crowd. This is the camera revealing people, not a crowd arriving."
+    },
+    {
+      "file": "charts/dc023_count_vs_truth.png",
+      "title": "DroneCrowd 023: detected vs true people",
+      "caption": "Detected people against ground truth over 12 seconds."
+    },
+    {
+      "file": "charts/jl030_count_vs_truth.png",
+      "title": "Juelich entrance experiment: risk and counts",
+      "caption": "A crush at a 0.5 m gate clearing over 65 s, with the surge and sustained-high alerts marked."
+    }
+  ],
+  "limits": [
+    "Detection undercounts packed crowds, and tightly packed seated rows seen from above are missed most.",
+    "The risk score is relative to how many people are found. D_CRIT is tuned per clip, so LOW / MEDIUM / HIGH are illustrative, not validated against real danger.",
+    "No dataset contains a real stampede, so the demo shows density and alerts, not a stampede.",
+    "The Juelich result uses a colour-based detector that only works for orange caps, on overhead camera footage, not a drone.",
+    "Alert thresholds (3 s hold, 8 risk points per second) are defaults that have not been tuned on varied footage."
+  ],
+  "sources": [
+    {
+      "name": "VisDrone2020-CC / DroneCrowd",
+      "by": "VisDrone team, Tianjin University",
+      "url": "https://github.com/VisDrone/DroneCrowd",
+      "licence": "not stated in the repository; used for research evaluation only"
+    },
+    {
+      "name": "Pexels clip 34004639",
+      "url": "https://www.pexels.com/video/aerial-view-of-outdoor-concert-in-city-park-34004639/",
+      "licence": "Pexels licence (free to use and modify)"
+    },
+    {
+      "name": "Forschungszentrum Juelich Pedestrian Dynamics Data Archive, DOI 10.34735/ped.2018.1",
+      "by": "Adrian, Boltes, Holl, Sieben, Seyfried",
+      "url": "https://ped.fz-juelich.de/da/doku.php?id=crowdqueue",
+      "licence": "free to use with attribution"
+    },
+    {
+      "name": "mshamrai/yolov8s-visdrone",
+      "url": "https://huggingface.co/mshamrai/yolov8s-visdrone",
+      "licence": "OpenRAIL"
+    }
+  ]
+}

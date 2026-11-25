@@ -1,0 +1,47 @@
+{
+  "incidents": [
+    {
+      "id": "concert",
+      "title": "Crowd at an outdoor concert (drone view)",
+      "kind": "Real drone footage",
+      "location": {
+        "name": "Tank Bund (demo location)",
+        "lat": 17.4239,
+        "lng": 78.4738
+      },
+      "events": "incidents/concert/events.jsonl",
+      "summary": "incidents/concert/summary.json",
+      "snapshots": "incidents/concert/",
+      "video": "/feed/concert.mp4",
+      "groundTruth": null,
+      "story": "Risk climbs from LOW to HIGH over 14 s. A surge alert fires at 7.5 s. The rise is partly the drone's view widening to take in more of the crowd, not people arriving.",
+      "caveats": [
+        "Free stock footage (Pexels clip 34004639); the real location is not Hyderabad, the map pin is a demo location.",
+        "D_CRIT 40 was tuned for this clip.",
+        "Seated rows are under-detected."
+      ]
+    },
+    {
+      "id": "jl030",
+      "title": "75 people pressing at a 0.5 m entrance (controlled experiment)",
+      "kind": "Controlled experiment, overhead camera",
+      "location": {
+        "name": "Tank Bund (demo location)",
+        "lat": 17.4239,
+        "lng": 78.4738
+      },
+      "events": "incidents/jl030/events.jsonl",
+      "summary": "incidents/jl030/summary.json",
+      "snapshots": "incidents/jl030/",
+      "video": null,
+      "groundTruth": "incidents/jl030/gt.csv",
+      "story": "A dense crowd is already packed at the gate. A surge alert fires at 3 s as people start pushing and a sustained-high alert at 6 s. Risk falls to LOW as the crowd passes through over 65 s.",
+      "caveats": [
+        "Indoor experiment with volunteers filmed from a fixed overhead camera in Germany, not a drone; the map pin is a demo location.",
+        "Uses a special-purpose orange-cap detector.",
+        "Shows a crush clearing, not building.",
+        "Video is 270 MB and is not included."
+      ]
+    }
+  ]
+}

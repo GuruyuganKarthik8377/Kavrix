@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kavrix · Drone First Response</title>
+    <meta name="description" content="Kavrix by Team Haven: drone first response for Indian police with crowd-crush warning, watchlist-only face matching and hash-chained evidence. CipherCop 2026, Track 1." />
+    <meta name="theme-color" content="#f1f0ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0e0f" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content="Kavrix · Drone First Response" />
+    <meta property="og:description" content="A drone that gets there first, a map that shows what's happening, and privacy and evidence built in." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet" />
+    <script>
+      // apply the saved theme before first paint to avoid a flash
+      try { document.documentElement.dataset.theme = localStorage.getItem('kavrix-theme') || 'light' } catch { document.documentElement.dataset.theme = 'light' }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

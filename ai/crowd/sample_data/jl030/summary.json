@@ -1,0 +1,34 @@
+{
+  "video": "data/juelich_crowdqueue/x/030_c_56_h0.mp4",
+  "frames": 1620,
+  "duration_s": 64.8,
+  "events": 65,
+  "alerts": 2,
+  "max_risk": 80.7,
+  "realtime": false,
+  "max_lag_s": 0.0,
+  "chain_events": 67,
+  "chain_head": "7eaecc5ecb851b273cea771f90551c89e0f1eac5dd664680d7999a31102b1db4",
+  "video_codec": "avc1",
+  "clean_video": true,
+  "mean_count": 43.0,
+  "max_count": 83,
+  "seconds_by_level": {
+    "LOW": 9.2,
+    "MEDIUM": 24.5,
+    "HIGH": 31.1
+  },
+  "processing_fps": 17.47,
+  "d_crit": 7.0,
+  "mag_crit": 1.0,
+  "api": {
+    "sent": 0,
+    "failed": 0,
+    "dropped": 0,
+    "pending": 0
+  },
+  "api_failures": 0,
+  "run_id": "juelich-run-030",
+  "drone_id": "D-01",
+  "schema_version": 1
+}

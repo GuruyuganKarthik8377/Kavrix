@@ -1,0 +1,135 @@
+{
+  "id": "campus",
+  "title": "Campus test: a consenting volunteer in a real crowd",
+  "recorded_on": "2026-11-20",
+  "source": "Recorded and combined by the face and privacy teammate; the video is used exactly as delivered.",
+  "location": {
+    "name": "Charminar (demo location)",
+    "lat": 17.3616,
+    "lng": 78.4747,
+    "note": "The clips were filmed on a college campus, not at Charminar. The map pin is a demo location."
+  },
+  "drone_id": "D-02",
+  "video": "campus_demo.mp4",
+  "video_seconds": 60.9,
+  "video_resolution": "1920x1080",
+  "enrolled_sheet": "enrolled_faces.jpg",
+  "enrolment": {
+    "label": "Campus volunteer (consented demo)",
+    "category": "missing_person",
+    "consent_ref": "HV-01",
+    "legal_basis": "Demo: consent form HV-01",
+    "photos": 2,
+    "faces_learned_from_video": 62,
+    "stored": "one averaged embedding, encrypted by the backend; no photos or crops are stored there"
+  },
+  "clips": [
+    {
+      "id": "IMG_3128",
+      "duration_s": 9.4,
+      "video_start": 2.5,
+      "volunteer_in_clip": true,
+      "matches": [
+        {
+          "t": 6.93,
+          "video_t": 9.43,
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "IMG_3129",
+      "duration_s": 10.9,
+      "video_start": 14.4,
+      "volunteer_in_clip": true,
+      "matches": [
+        {
+          "t": 6.2,
+          "video_t": 20.6,
+          "confidence": 0.79
+        }
+      ]
+    },
+    {
+      "id": "IMG_3132",
+      "duration_s": 26.2,
+      "video_start": 27.8,
+      "volunteer_in_clip": true,
+      "matches": [
+        {
+          "t": 24.53,
+          "video_t": 52.33,
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "id": "IMG_3133",
+      "duration_s": 4.4,
+      "video_start": 56.5,
+      "volunteer_in_clip": false,
+      "matches": []
+    }
+  ],
+  "totals": {
+    "clips": 4,
+    "seconds": 50.9,
+    "matches": 3,
+    "confidence_min": 0.6,
+    "confidence_max": 0.82,
+    "confidence_mean": 0.7367,
+    "matches_in_clip_without_volunteer": 0
+  },
+  "video_matches": [
+    {
+      "clip": "IMG_3128",
+      "video_t": 9.43,
+      "confidence": 0.6
+    },
+    {
+      "clip": "IMG_3129",
+      "video_t": 20.6,
+      "confidence": 0.79
+    },
+    {
+      "clip": "IMG_3132",
+      "video_t": 52.33,
+      "confidence": 0.82
+    }
+  ],
+  "held_out_test": {
+    "what": "The face team trained on two clips and tested on a third (IMG_3132), over every face of the volunteer found in it.",
+    "rows": [
+      {
+        "template": "2 photos only",
+        "recall": 0.84,
+        "mean_similarity": 0.63
+      },
+      {
+        "template": "2 photos + 46 faces learned from video",
+        "recall": 1.0,
+        "mean_similarity": 0.73
+      }
+    ],
+    "notes": [
+      "Bystanders: the closest of about 215 other faces scored 0.29 against the 0.5 match line.",
+      "Clip 4, where he does not appear: nobody matched.",
+      "On a crowd frame he was identified at 85% and sent for review; the other 29 faces were pixelated."
+    ],
+    "source": "Measured by the face team (haven/haven/face/README.md)."
+  },
+  "reference": {
+    "stock_sample": {
+      "confidence": 0.96,
+      "note": "The InsightFace group-photo clip, where the enrolment photo is cut from the same footage. An easy case, not comparable to real footage."
+    }
+  },
+  "limits": [
+    "Confidence is the cosine similarity between face embeddings, shown as a percentage. It is not the probability that the person is right. The match line is 50%.",
+    "One volunteer, one campus, four clips. This is a feasibility test, not an accuracy benchmark.",
+    "He is matched in only part of the frames where he appears: faces must be clear (detector score 0.6, at least 40 px) before they are checked, and each face is checked at most 3 times.",
+    "The face team's own audit at detector score 0.3 found no real face left unblurred, only a shirt and a hand. A face mostly outside the frame, or one too small for the detector, cannot be pixelated.",
+    "The recording is 1920\u00d71080, the face pipeline's output. The raw 4K clips show bystanders and are not part of the project files.",
+    "Matching depends on the template and on when the checks happen. Re-running the same footage on this backend gave 2 matches at 59\u201364%, against 60%, 79% and 82% here, so read the numbers as one run."
+  ]
+}

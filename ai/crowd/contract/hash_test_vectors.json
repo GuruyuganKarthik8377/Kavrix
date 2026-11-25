@@ -1,0 +1,94 @@
+{
+  "description": "Test vectors for the event_hash rule. canonical = keys sorted at every level, no spaces, floats with no fractional part printed as integers (64.0 -> 64, 0.0 -> 0), UTF-8, ensure_ascii off. event_hash = SHA-256 hex of the canonical text of the event WITHOUT its own event_hash field.",
+  "vectors": [
+    {
+      "name": "synthetic: integral floats, nesting, null, unicode",
+      "input": {
+        "id": "abc",
+        "type": "crowd_risk",
+        "risk": 64.0,
+        "motion": 0.0,
+        "density_peak": 6.41,
+        "count": 75,
+        "hotspot": {
+          "x": 0.21,
+          "y": 0.558
+        },
+        "lat": 17.4239,
+        "heatmap": null,
+        "ok": true,
+        "list": [
+          1.0,
+          2.5,
+          "é"
+        ]
+      },
+      "canonical": "{\"count\":75,\"density_peak\":6.41,\"heatmap\":null,\"hotspot\":{\"x\":0.21,\"y\":0.558},\"id\":\"abc\",\"lat\":17.4239,\"list\":[1,2.5,\"é\"],\"motion\":0,\"ok\":true,\"risk\":64,\"type\":\"crowd_risk\"}",
+      "sha256": "d4476d4c4a29d6d02fdb1d4355d2163253af5b026fde56c0b4021a9461be2cd7"
+    },
+    {
+      "name": "real concert event (seq 3)",
+      "input": {
+        "id": "32b86bcac617",
+        "type": "crowd_risk",
+        "lat": 17.4239,
+        "lng": 78.4738,
+        "risk": 15.6,
+        "level": "LOW",
+        "count": 135,
+        "density_peak": 9.44,
+        "motion": 0.18,
+        "risk_rate": 5.1,
+        "time_to_high": 9.6,
+        "hotspot": {
+          "x": 0.698,
+          "y": 0.241
+        },
+        "timestamp": "2026-11-20T08:19:50.481+00:00",
+        "video_t": 3.0,
+        "heatmap": "heatmaps/event_0003.jpg",
+        "evidence_hash": "c4729e293158027f929dd13db168ef790d25b65c13cee498073f91c9b4af1205",
+        "schema_version": 1,
+        "run_id": "concert-pexels-34004639",
+        "drone_id": "D-01",
+        "seq": 3,
+        "prev_hash": "103447932b5e07c3e0c42cd096ceecfe42f89c620ae559081ecf591d62bdc821"
+      },
+      "canonical": "{\"count\":135,\"density_peak\":9.44,\"drone_id\":\"D-01\",\"evidence_hash\":\"c4729e293158027f929dd13db168ef790d25b65c13cee498073f91c9b4af1205\",\"heatmap\":\"heatmaps/event_0003.jpg\",\"hotspot\":{\"x\":0.698,\"y\":0.241},\"id\":\"32b86bcac617\",\"lat\":17.4239,\"level\":\"LOW\",\"lng\":78.4738,\"motion\":0.18,\"prev_hash\":\"103447932b5e07c3e0c42cd096ceecfe42f89c620ae559081ecf591d62bdc821\",\"risk\":15.6,\"risk_rate\":5.1,\"run_id\":\"concert-pexels-34004639\",\"schema_version\":1,\"seq\":3,\"time_to_high\":9.6,\"timestamp\":\"2026-11-20T08:19:50.481+00:00\",\"type\":\"crowd_risk\",\"video_t\":3}",
+      "sha256": "bdf4c91335f9bff54fecf04d0d42dbe27b2e1f6e7b1176e31009d2b1619c738f"
+    },
+    {
+      "name": "real concert alert (seq 8)",
+      "input": {
+        "id": "918f421a388c",
+        "type": "crowd_alert",
+        "lat": 17.4239,
+        "lng": 78.4738,
+        "risk": 47.3,
+        "level": "MEDIUM",
+        "count": 498,
+        "density_peak": 30.64,
+        "motion": 0.14,
+        "risk_rate": 8.0,
+        "time_to_high": 2.2,
+        "hotspot": {
+          "x": 0.221,
+          "y": 0.548
+        },
+        "timestamp": "2026-11-20T08:19:58.614+00:00",
+        "video_t": 7.51,
+        "heatmap": "heatmaps/alert_0000.jpg",
+        "evidence_hash": "4070abafd4339d32889d0fa6ac8612b0b9277237978e61b40af9c7c8ee71902c",
+        "alert_kind": "surge",
+        "message": "Rapid crowd build-up: risk rising 8 points/s, now 47/100 (498 people detected). HIGH in about 2 s at this rate (estimate). Check the hotspot.",
+        "schema_version": 1,
+        "run_id": "concert-pexels-34004639",
+        "drone_id": "D-01",
+        "seq": 8,
+        "prev_hash": "682af5110fee83d6570be68f752041f483feaaf1d843f0a5e6619a14107e7fa2"
+      },
+      "canonical": "{\"alert_kind\":\"surge\",\"count\":498,\"density_peak\":30.64,\"drone_id\":\"D-01\",\"evidence_hash\":\"4070abafd4339d32889d0fa6ac8612b0b9277237978e61b40af9c7c8ee71902c\",\"heatmap\":\"heatmaps/alert_0000.jpg\",\"hotspot\":{\"x\":0.221,\"y\":0.548},\"id\":\"918f421a388c\",\"lat\":17.4239,\"level\":\"MEDIUM\",\"lng\":78.4738,\"message\":\"Rapid crowd build-up: risk rising 8 points/s, now 47/100 (498 people detected). HIGH in about 2 s at this rate (estimate). Check the hotspot.\",\"motion\":0.14,\"prev_hash\":\"682af5110fee83d6570be68f752041f483feaaf1d843f0a5e6619a14107e7fa2\",\"risk\":47.3,\"risk_rate\":8,\"run_id\":\"concert-pexels-34004639\",\"schema_version\":1,\"seq\":8,\"time_to_high\":2.2,\"timestamp\":\"2026-11-20T08:19:58.614+00:00\",\"type\":\"crowd_alert\",\"video_t\":7.51}",
+      "sha256": "654afcc3532faccc3dd0720891d82c24f83c55357c67a18a78bf12b7fca0d053"
+    }
+  ]
+}
