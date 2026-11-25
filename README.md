@@ -1,6 +1,6 @@
 # Haven / Kavrix: AI for Smart Public Safety
 
-By [Harishram Balamurugan](https://github.com/Harishram4106) with **Team Haven** · CipherCop 2026 · Track 1: AI for Smart Public Safety (drones, facial recognition, live law-and-order surveillance, geospatial intelligence)
+ CipherCop 2026 · Track 1: AI for Smart Public Safety (drones, facial recognition, live law-and-order surveillance, geospatial intelligence)
 
 > **First on Scene. Private by Design. Proof That Holds.**
 
