@@ -1,4 +1,4 @@
-# Haven / Kavrix: AI for Smart Public Safety
+# Kavrix: AI for Smart Public Safety
 
  CipherCop 2026 · Track 1: AI for Smart Public Safety (drones, facial recognition, live law-and-order surveillance, geospatial intelligence)
 
