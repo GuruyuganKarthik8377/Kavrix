@@ -458,12 +458,12 @@ Log in with `POST /auth/login` (roles: `commander`, `officer`, `worker`); tokens
 
 Data sources, licences and what is and is not included are in [`DATASETS.md`](DATASETS.md).
 
-**Maintainer:** Harishram Balamurugan ([@Harishram4106](https://github.com/Harishram4106)).
+**Maintainer:** Guruyugan Karthik ([@GuruyuganKarthik8377](https://github.com/GuruyuganKarthik8377)).
 
 **Team Haven (CipherCop 2026):** Guruyugan Karthik, Harishram Balamurugan, Hariharasrinivas T, Harish Ram S.
 
 ## License
 
-The code in this repository is released under the [MIT License](LICENSE), © 2026 Harishram Balamurugan.
+The code in this repository is released under the [MIT License](LICENSE), © 2026 Guruyugan Karthik.
 
 Third-party parts keep their own terms: [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) is AGPL-3.0, InsightFace pretrained models are non-commercial research only, the bundled fonts are SIL OFL, and the datasets and clips are listed in [`DATASETS.md`](DATASETS.md). Check those before any commercial use.
